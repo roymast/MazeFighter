@@ -41,9 +41,12 @@ public class ObjectPooler : MonoBehaviour
     }
     public GameObject SpawnFromPool(string tag, Vector2 pos, Vector2 rot)
     {
+        Debug.Log("trying to shoot");
         if (!poolDictionary.ContainsKey(tag))
+        {
+            Debug.Log("not found");
             return null;
-
+        }
         GameObject newObj = poolDictionary[tag].Dequeue();
         newObj.SetActive(true);
         newObj.transform.position = pos;

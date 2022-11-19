@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour
 {
     public Vector3 Movement;
     public Vector2 PosToLook;
+
+    [HideInInspector]
     public float Speed;
     private void FixedUpdate()
     {

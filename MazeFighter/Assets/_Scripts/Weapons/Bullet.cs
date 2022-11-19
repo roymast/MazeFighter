@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour, IPooledObject
 {
-    Rigidbody2D _rb;    
+    [SerializeField] Rigidbody2D _rb;    
 
     private void OnTriggerEnter2D(Collider2D collision)
     {        
@@ -25,9 +25,15 @@ public class Bullet : MonoBehaviour, IPooledObject
             damageable.Damage();
     }
 
-    public void OnObjectSpawn(Vector2 pos, Vector2 dir, Vector2 speed)
-    {
+    public void OnObjectSpawn(Vector2 pos, Vector2 dir, float speed)
+    {        
         transform.position = pos;
         _rb.AddForce(dir*speed, ForceMode2D.Impulse);
+    }
+    public void Init(Vector2 pos, Vector2 dir, float speed)
+    {
+        transform.position = pos;
+        transform.up = dir;
+        _rb.AddForce(dir * speed, ForceMode2D.Impulse);
     }
 }
