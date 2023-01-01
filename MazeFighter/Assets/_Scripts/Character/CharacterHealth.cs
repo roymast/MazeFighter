@@ -25,9 +25,12 @@ public class CharacterHealth : MonoBehaviour
     private void OnDamage(int damage)
     {
         _health -= damage;
-        if (_health <= 0)        
-            Debug.Log("dead");                
-        _healthbarTransform.localScale = new Vector3((float)_health / _startingHealth, _healthbarTransform.localScale.y);
+        if (_health <= 0)
+        {
+            Debug.Log("dead");
+            _health = 0;
+        }
+        _healthbarTransform.localScale = new Vector3((float)_health / _startingHealth, _healthbarTransform.localScale.y);        
         OnHealthChange?.Invoke(_health);
     }    
 }

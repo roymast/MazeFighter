@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Sword : IWeapon
 {
-    public virtual void ChangeWeapon(WeaponSO weaponSO)
+    public override void ChangeWeapon(WeaponSO weaponSO)
     {
         base.ChangeWeapon(weaponSO);
         Debug.Log("SwordChangeWeapon");

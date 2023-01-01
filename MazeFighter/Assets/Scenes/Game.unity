@@ -1330,6 +1330,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 1827832916}
+  NextWeapon: 9
 --- !u!60 &1827832913
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1372,7 +1373,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _timeBetweenUses: 5
   _lastTimeUsed: 0
-  gunSO: {fileID: 11400000, guid: bea723a4fed89d34fa99acf305d03b50, type: 2}
+  _sprite: {fileID: 0}
+  gunSO: {fileID: 11400000, guid: 841c02112dbdbdb43b683643cde707ea, type: 2}
   _bullet: {fileID: 8009104605054200928, guid: a44ffa5ce907cd143b68bb1650668d4c, type: 3}
   _bulletsContainer: {fileID: 347038899}
   _shootingPos: {fileID: 1167162806}
@@ -1412,6 +1414,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6b41c4d4a9b11b4d9d1ce8ac4e2f8cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _weaponSOList:
+  - {fileID: 11400000, guid: 841c02112dbdbdb43b683643cde707ea, type: 2}
+  - {fileID: 11400000, guid: bea723a4fed89d34fa99acf305d03b50, type: 2}
+  - {fileID: 11400000, guid: e86848a7ba897ad419d99463ad08715f, type: 2}
+  _currentWeaponSO: 0
   _currentWeapon: {fileID: 0}
   _playerController: {fileID: 1827832915}
   _characterHealth: {fileID: 1827832918}
@@ -1601,6 +1608,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6b41c4d4a9b11b4d9d1ce8ac4e2f8cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _weaponSOList: []
+  _currentWeaponSO: 0
   _currentWeapon: {fileID: 0}
   _playerController: {fileID: 1845538085}
   _characterHealth: {fileID: 1845538087}
