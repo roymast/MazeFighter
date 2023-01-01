@@ -25,6 +25,11 @@ public class Character : MonoBehaviour
     {        
         _currentWeapon.Use();
     }
+    public void UseWeaponAuto()
+    {
+        if(_weaponSOList[_currentWeaponSO].IsAutomatic)
+            _currentWeapon.Use();
+    }
 
     public void NextWeapon()
     {

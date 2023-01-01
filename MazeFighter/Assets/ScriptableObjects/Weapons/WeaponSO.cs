@@ -8,4 +8,5 @@ public class WeaponSO : ScriptableObject
     public string WeaponName;
     public float TimeBetweenUses;        
     public Sprite Sprite;
+    public bool IsAutomatic;
 }

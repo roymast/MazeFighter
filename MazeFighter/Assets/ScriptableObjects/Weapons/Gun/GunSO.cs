@@ -13,5 +13,4 @@ public class GunSO : WeaponSO
     public int BulletDamage;    
     public float BulletSpeed;
     public float BulletDeviation;
-    public bool IsAutomatic;
 }

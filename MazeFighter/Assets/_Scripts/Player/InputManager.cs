@@ -24,6 +24,8 @@ public class InputManager : MonoBehaviour
         _rotation =  mainCamera.ScreenToWorldPoint(Input.mousePosition);
         if (Input.GetMouseButtonDown(0))
             _player.UseWeapon();
+        if (Input.GetMouseButton(0))
+            _player.UseWeaponAuto();
         if (Input.GetKeyDown(NextWeapon))
             _player.NextWeapon();
         _player.PlayerMove(_movement, _rotation);

@@ -7,7 +7,7 @@ public abstract class IWeapon : MonoBehaviour
     [Header("Weapon Starting Stats")]
     [SerializeField] protected float _timeBetweenUses;
     [SerializeField] protected float _lastTimeUsed;
-    [SerializeField] protected Sprite _sprite;
+    [SerializeField] protected Sprite _sprite;    
 
     private void Start()
     {
