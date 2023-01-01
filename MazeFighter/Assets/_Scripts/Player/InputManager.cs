@@ -5,6 +5,7 @@ using UnityEngine;
 public class InputManager : MonoBehaviour
 {
     [SerializeField] Character _player;
+    [SerializeField] KeyCode NextWeapon;
     Vector2 _rotation;
     Vector2 _movement;
 
@@ -23,6 +24,8 @@ public class InputManager : MonoBehaviour
         _rotation =  mainCamera.ScreenToWorldPoint(Input.mousePosition);
         if (Input.GetMouseButtonDown(0))
             _player.UseWeapon();
+        if (Input.GetKeyDown(NextWeapon))
+            _player.NextWeapon();
         _player.PlayerMove(_movement, _rotation);
     }
 }

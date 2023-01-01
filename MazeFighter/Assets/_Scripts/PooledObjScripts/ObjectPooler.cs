@@ -57,8 +57,7 @@ public class ObjectPooler : MonoBehaviour
         return CreateGameObject(pool);
     }
     public GameObject SpawnFromPool(string tag)
-    {
-        Debug.Log("trying to shoot");
+    {        
         if (!poolDictionary.ContainsKey(tag))
         {
             Debug.Log("not found");

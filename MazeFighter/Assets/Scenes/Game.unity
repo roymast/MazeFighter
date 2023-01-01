@@ -1370,8 +1370,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f9856b56b7b0b44a81c37b25e77ba4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timeBetweenUses: 0.5
+  _timeBetweenUses: 5
   _lastTimeUsed: 0
+  gunSO: {fileID: 11400000, guid: bea723a4fed89d34fa99acf305d03b50, type: 2}
   _bullet: {fileID: 8009104605054200928, guid: a44ffa5ce907cd143b68bb1650668d4c, type: 3}
   _bulletsContainer: {fileID: 347038899}
   _shootingPos: {fileID: 1167162806}

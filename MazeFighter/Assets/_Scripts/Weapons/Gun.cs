@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Gun : IWeapon
-{    
+{
+    [SerializeField] GunSO gunSO;
+
     [SerializeField] Bullet _bullet;
     [SerializeField] Transform _bulletsContainer;
     [SerializeField] Transform _shootingPos;
@@ -26,6 +28,25 @@ public class Gun : IWeapon
     private void Start()
     {
         _shooterCollider = gameObject.GetComponent<Collider2D>();
+        if (gunSO != null)
+            SetValuesBySO();
+    }
+    public override void ChangeWeapon(WeaponSO weaponSO)
+    {
+        gunSO = (GunSO)weaponSO;
+        SetValuesBySO();
+    }
+    void SetValuesBySO()
+    {
+        base.ChangeWeapon(gunSO);
+        
+        _bulletsPerMagasine = gunSO.BulletsPerMagasine;
+        _reloadingTime = gunSO.ReloadingTime;
+        _magasinesAmount = gunSO.MagasinesAmount;
+        _bulletsAmount = gunSO.BulletsPerMagasine;        
+        _bulletDamage = gunSO.BulletDamage;
+        _bulletSpeeed = gunSO.BulletSpeed;
+        _bulletDeviation = gunSO.BulletDeviation;
     }
     private void Update()
     {
@@ -44,8 +65,7 @@ public class Gun : IWeapon
     public void Shoot()
     {
         GameObject newBullet = ObjectPooler.Instance.SpawnFromPool(_bullet.tag);
-        newBullet.GetComponent<Bullet>().Init(_shootingPos.position, _shootingPos.up, _bulletSpeeed, _bulletDamage, _shooterCollider);
-        //Instantiate(_bullet, _bulletsContainer).Init(_shootingPos.position, _shootingPos.up, _bulletSpeeed, _shooterCollider);        
+        newBullet.GetComponent<Bullet>().Init(_shootingPos.position, _shootingPos.up, _bulletSpeeed, _bulletDamage, _shooterCollider);        
     }
 
     public override bool IsCanUse()

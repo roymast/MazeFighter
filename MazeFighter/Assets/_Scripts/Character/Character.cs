@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
+    [SerializeField] WeaponSO[] _weaponSOList;
+    [SerializeField] int _currentWeaponSO;
     [SerializeField] IWeapon _currentWeapon;
     [SerializeField] CharacterMover _playerController;
     [SerializeField] CharacterHealth _characterHealth;
@@ -22,6 +24,14 @@ public class Character : MonoBehaviour
     public void UseWeapon()
     {        
         _currentWeapon.Use();
+    }
+
+    public void NextWeapon()
+    {
+        _currentWeaponSO++;
+        if (_currentWeaponSO >= _weaponSOList.Length)
+            _currentWeaponSO = 0;
+        _currentWeapon.ChangeWeapon(_weaponSOList[_currentWeaponSO]);
     }
 
     public void PlayerMove(Vector2 movement, Vector2 rotation)

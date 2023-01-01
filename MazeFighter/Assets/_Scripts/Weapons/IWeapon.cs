@@ -5,12 +5,18 @@ using UnityEngine;
 public abstract class IWeapon : MonoBehaviour
 {
     [Header("Weapon Starting Stats")]
-    [SerializeField] float _timeBetweenUses;        
-    [SerializeField] float _lastTimeUsed;       
+    [SerializeField] protected float _timeBetweenUses;
+    [SerializeField] protected float _lastTimeUsed;
+    [SerializeField] protected Sprite _sprite;
 
     private void Start()
     {
         _lastTimeUsed = Time.time;
+    }
+    public virtual void ChangeWeapon(WeaponSO weaponSO)
+    {
+        _timeBetweenUses = weaponSO.TimeBetweenUses;
+        _sprite = weaponSO.Sprite;
     }
 
     public virtual bool IsCanUse()
