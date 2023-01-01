@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] Gun _gun;
+    [SerializeField] IWeapon _currentWeapon;
     [SerializeField] PlayerController _playerController;
 
     [Header("stats")]
@@ -14,14 +14,14 @@ public class Player : MonoBehaviour
     private void Start()
     {
         _playerController.Speed = speed;
-        _gun = gameObject.GetComponent<Gun>();
-        Debug.Log(_gun);
+        _currentWeapon = gameObject.GetComponent<IWeapon>();
+        Debug.Log(_currentWeapon);
     }
 
-    public void PlayerShoot()
+    public void UseWeapon()
     {
-        Debug.Log("PlayerShoot");
-        _gun.Shoot();
+        Debug.Log("Player:UseWeapon()");
+        _currentWeapon.Use();
     }
 
     public void PlayerMove(Vector2 movement, Vector2 rotation)

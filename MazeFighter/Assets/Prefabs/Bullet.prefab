@@ -95,10 +95,11 @@ GameObject:
   m_Component:
   - component: {fileID: 6340481386479684688}
   - component: {fileID: 8009104605054200928}
-  - component: {fileID: 2800826196825310044}
+  - component: {fileID: 3116271301984003347}
+  - component: {fileID: 137871195069469163}
   m_Layer: 0
   m_Name: Bullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -132,8 +133,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2204e32e81ab1d48a9e089c779e356c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rb: {fileID: 2800826196825310044}
---- !u!50 &2800826196825310044
+  _rb: {fileID: 137871195069469163}
+  _collider2D: {fileID: 3116271301984003347}
+--- !u!70 &3116271301984003347
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4040750546260606188}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.000000029802322, y: 0.042135626}
+  m_Size: {x: 0.20368254, y: 0.20368254}
+  m_Direction: 0
+--- !u!50 &137871195069469163
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -228,7 +246,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.82689786, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

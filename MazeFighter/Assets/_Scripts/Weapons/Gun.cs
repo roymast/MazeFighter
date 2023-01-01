@@ -2,57 +2,70 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Gun : MonoBehaviour
+public class Gun : IWeapon
 {    
     [SerializeField] Bullet _bullet;
     [SerializeField] Transform _bulletsContainer;
     [SerializeField] Transform _shootingPos;
+    [SerializeField] Collider2D _shooterCollider;
 
     [Header("Gun Starting Stats")]
     [SerializeField] int _bulletsPerMagasine;
-    [SerializeField] float _timeBetweenShots;
-    [SerializeField] float _loadingTime;
+    [SerializeField] float _reloadingTime;
 
     [Header("Gun Current Stats")]
     [SerializeField] int _magasinesAmount;
     [SerializeField] int _bulletsAmount;
-    [SerializeField] float _lastTimeShot;
     [SerializeField] float _lastTimeReload;
 
     [Header("Bullets Stats")]
     [SerializeField] float _bulletSpeeed;
     [SerializeField] float _bulletDeviation;
 
-    float startTime;
     private void Start()
     {
-        startTime = Time.time;
+        _shooterCollider = gameObject.GetComponent<Collider2D>();
     }
-
     private void Update()
     {
         if (_bulletsAmount <= 0 && _magasinesAmount > 0)
             Reload();
-
     }
 
     public void Reload()
-    { 
+    {
+        Debug.Log("Gun:reload");
         _lastTimeReload = Time.time;
         _bulletsAmount = _bulletsPerMagasine;
+        _magasinesAmount--;
     }
 
     public void Shoot()
     {
-        Debug.Log("Gun:Shoot");
-        if (Time.time - _lastTimeShot < _timeBetweenShots)
-            return;
-        //if (Time.time - _lastTimeReload < _loadingTime)
-        //    return;
+        GameObject newBullet = ObjectPooler.Instance.SpawnFromPool(_bullet.tag);
+        newBullet.GetComponent<Bullet>().Init(_shootingPos.position, _shootingPos.up, _bulletSpeeed, _shooterCollider);
+        //Instantiate(_bullet, _bulletsContainer).Init(_shootingPos.position, _shootingPos.up, _bulletSpeeed, _shooterCollider);        
+    }
+
+    public override bool IsCanUse()
+    {        
+        if (!base.IsCanUse())
+            return false;
         if (_bulletsAmount <= 0)
-            return;
-        _lastTimeShot = Time.time;
-        Instantiate(_bullet, _bulletsContainer).Init(_shootingPos.position, _shootingPos.up, _bulletSpeeed);        
+            return false;
+        //if (Time.time - _lastTimeReload > _reloadingTime)
+        //    return false;
+        return true;
+    }
+
+    public override void Use()
+    {
+        if (IsCanUse())
+        {
+            base.Use();
+            _bulletsAmount--;
+            Shoot();
+        }        
     }
 }
 

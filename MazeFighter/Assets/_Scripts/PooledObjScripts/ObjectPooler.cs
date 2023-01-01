@@ -30,16 +30,33 @@ public class ObjectPooler : MonoBehaviour
         foreach (Pool pool in Pools)
         {
             Queue<GameObject> objectQueue = new Queue<GameObject>();
-            for (int i = 0; i < pool.size; i++)
-            {
-                GameObject newObj = Instantiate(pool.perfab, transform);
-                newObj.SetActive(false);
-                objectQueue.Enqueue(newObj);
-            }
             poolDictionary.Add(pool.tag, objectQueue);
+            for (int i = 0; i < pool.size; i++)            
+                CreateGameObject(pool);                                 
         }
     }
-    public GameObject SpawnFromPool(string tag, Vector2 pos, Vector2 rot)
+    private GameObject CreateGameObject(Pool pool)
+    {
+        GameObject newObj = Instantiate(pool.perfab, transform);
+        newObj.SetActive(false);
+        poolDictionary[pool.tag].Enqueue(newObj);
+        return newObj;
+    }
+    private int FindPoolByTag(string tagToFind)
+    {
+        for (int i = 0; i < Pools.Count; i++)
+        {
+            if (Pools[i].tag == tagToFind)
+                return i;
+        }
+        return -1;
+    }
+    private GameObject InsertObjectMidRun(string tag)
+    {
+        Pool pool = Pools[FindPoolByTag(tag)];        
+        return CreateGameObject(pool);
+    }
+    public GameObject SpawnFromPool(string tag)
     {
         Debug.Log("trying to shoot");
         if (!poolDictionary.ContainsKey(tag))
@@ -47,10 +64,13 @@ public class ObjectPooler : MonoBehaviour
             Debug.Log("not found");
             return null;
         }
-        GameObject newObj = poolDictionary[tag].Dequeue();
-        newObj.SetActive(true);
-        newObj.transform.position = pos;
-        newObj.transform.up = (rot - (Vector2)transform.position).normalized;
+        GameObject newObj = null;
+        poolDictionary[tag].TryDequeue(out newObj);
+
+        if (newObj == null)
+            newObj = InsertObjectMidRun(tag);
+
+        newObj.SetActive(true);        
         poolDictionary[tag].Enqueue(newObj);
 
         return newObj;

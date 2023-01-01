@@ -22,7 +22,7 @@ public class InputManager : MonoBehaviour
         _movement = new Vector2(Input.GetAxis(Horizontal), Input.GetAxis(Vertical));
         _rotation =  mainCamera.ScreenToWorldPoint(Input.mousePosition);
         if (Input.GetMouseButtonDown(0))
-            _player.PlayerShoot();
+            _player.UseWeapon();
         _player.PlayerMove(_movement, _rotation);
     }
 }

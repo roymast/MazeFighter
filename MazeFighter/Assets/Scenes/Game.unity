@@ -854,7 +854,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 106e1a48673e2b94498c0c6882c68cdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gun: {fileID: 1827832914}
+  _currentWeapon: {fileID: 0}
   _playerController: {fileID: 1827832910}
   hp: 0
   speed: 5
@@ -911,15 +911,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f9856b56b7b0b44a81c37b25e77ba4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _timeBetweenUses: 0.5
+  _lastTimeUsed: 0
   _bullet: {fileID: 8009104605054200928, guid: a44ffa5ce907cd143b68bb1650668d4c, type: 3}
   _bulletsContainer: {fileID: 347038899}
   _shootingPos: {fileID: 1167162806}
+  _shooterCollider: {fileID: 0}
   _bulletsPerMagasine: 10
-  _timeBetweenShots: 0.5
-  _loadingTime: 5
+  _reloadingTime: 2
   _magasinesAmount: 3
   _bulletsAmount: 10
-  _lastTimeShot: 0
   _lastTimeReload: 0
   _bulletSpeeed: 7
   _bulletDeviation: 1
@@ -934,6 +935,7 @@ GameObject:
   - component: {fileID: 1845538082}
   - component: {fileID: 1845538081}
   - component: {fileID: 1845538083}
+  - component: {fileID: 1845538084}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -1036,3 +1038,15 @@ PolygonCollider2D:
     - - {x: 0, y: 0.5773587}
       - {x: -0.5, y: -0.28866667}
       - {x: 0.5, y: -0.28866667}
+--- !u!114 &1845538084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1845538080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbaa95c71663f7845a5368c4bfef5d76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
