@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Character : MonoBehaviour
 {
     [SerializeField] IWeapon _currentWeapon;
-    [SerializeField] PlayerController _playerController;
+    [SerializeField] CharacterMover _playerController;
+    [SerializeField] CharacterHealth _characterHealth;
 
     [Header("stats")]
     public int hp;
@@ -15,12 +16,11 @@ public class Player : MonoBehaviour
     {
         _playerController.Speed = speed;
         _currentWeapon = gameObject.GetComponent<IWeapon>();
-        Debug.Log(_currentWeapon);
+        _characterHealth.SetHealth(hp);
     }
 
     public void UseWeapon()
-    {
-        Debug.Log("Player:UseWeapon()");
+    {        
         _currentWeapon.Use();
     }
 

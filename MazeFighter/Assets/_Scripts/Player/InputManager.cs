@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
-    [SerializeField] Player _player;
+    [SerializeField] Character _player;
     Vector2 _rotation;
     Vector2 _movement;
 

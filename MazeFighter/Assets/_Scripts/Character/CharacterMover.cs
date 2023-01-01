@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class CharacterMover : MonoBehaviour
 {
     public Vector3 Movement;
     public Vector2 PosToLook;

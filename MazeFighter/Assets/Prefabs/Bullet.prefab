@@ -135,6 +135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rb: {fileID: 137871195069469163}
   _collider2D: {fileID: 3116271301984003347}
+  _bulletDamage: 10
 --- !u!70 &3116271301984003347
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

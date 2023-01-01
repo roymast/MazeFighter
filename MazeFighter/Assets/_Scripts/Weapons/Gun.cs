@@ -17,6 +17,7 @@ public class Gun : IWeapon
     [SerializeField] int _magasinesAmount;
     [SerializeField] int _bulletsAmount;
     [SerializeField] float _lastTimeReload;
+    [SerializeField] int _bulletDamage;
 
     [Header("Bullets Stats")]
     [SerializeField] float _bulletSpeeed;
@@ -43,7 +44,7 @@ public class Gun : IWeapon
     public void Shoot()
     {
         GameObject newBullet = ObjectPooler.Instance.SpawnFromPool(_bullet.tag);
-        newBullet.GetComponent<Bullet>().Init(_shootingPos.position, _shootingPos.up, _bulletSpeeed, _shooterCollider);
+        newBullet.GetComponent<Bullet>().Init(_shootingPos.position, _shootingPos.up, _bulletSpeeed, _bulletDamage, _shooterCollider);
         //Instantiate(_bullet, _bulletsContainer).Init(_shootingPos.position, _shootingPos.up, _bulletSpeeed, _shooterCollider);        
     }
 
