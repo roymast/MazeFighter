@@ -5,7 +5,6 @@ using UnityEngine;
 public class Gun : IWeapon
 {
     [SerializeField] GunSO gunSO;
-
     [SerializeField] Bullet _bullet;
     [SerializeField] Transform _bulletsContainer;
     [SerializeField] Transform _shootingPos;
