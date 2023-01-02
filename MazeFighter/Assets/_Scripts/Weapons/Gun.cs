@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,17 +14,19 @@ public class Gun : IWeapon
     [Header("Gun Starting Stats")]
     [SerializeField] int _bulletsPerMagasine;
     [SerializeField] float _reloadingTime;
-
+        
     [Header("Gun Current Stats")]
-    [SerializeField] int _magasinesAmount;
-    [SerializeField] int _bulletsAmount;
     [SerializeField] float _lastTimeReload;
-    [SerializeField] int _bulletDamage;
+    public int _magasinesAmount { get; private set; }
+    public int _bulletsAmount { get; private set; }
+    public int _bulletDamage { get; private set; }
+
 
     [Header("Bullets Stats")]
     [SerializeField] float _bulletSpeeed;
     [SerializeField] float _bulletDeviation;
 
+    public event Action<Gun> OnGunStateChange;
     private void Start()
     {
         _shooterCollider = gameObject.GetComponent<Collider2D>();
@@ -59,12 +62,14 @@ public class Gun : IWeapon
         _lastTimeReload = Time.time;
         _bulletsAmount = _bulletsPerMagasine;
         _magasinesAmount--;
+        OnGunStateChange?.Invoke(this);
     }
 
     public void Shoot()
     {
         GameObject newBullet = ObjectPooler.Instance.SpawnFromPool(_bullet.tag);
-        newBullet.GetComponent<Bullet>().Init(_shootingPos.position, _shootingPos.up, _bulletSpeeed, _bulletDamage, _shooterCollider);        
+        newBullet.GetComponent<Bullet>().Init(_shootingPos.position, _shootingPos.up, _bulletSpeeed, _bulletDamage, _shooterCollider);
+        OnGunStateChange?.Invoke(this);
     }
 
     public override bool IsCanUse()
@@ -86,6 +91,6 @@ public class Gun : IWeapon
             _bulletsAmount--;
             Shoot();
         }        
-    }
+    }    
 }
 

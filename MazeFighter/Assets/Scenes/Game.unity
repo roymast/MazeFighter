@@ -3946,10 +3946,7 @@ MonoBehaviour:
   _shooterCollider: {fileID: 1827832913}
   _bulletsPerMagasine: 10
   _reloadingTime: 2
-  _magasinesAmount: 3
-  _bulletsAmount: 10
   _lastTimeReload: 0
-  _bulletDamage: 10
   _bulletSpeeed: 7
   _bulletDeviation: 1
 --- !u!114 &1827832915
@@ -4314,7 +4311,7 @@ GameObject:
   - component: {fileID: 2122602091}
   - component: {fileID: 2122602093}
   m_Layer: 5
-  m_Name: Weapon
+  m_Name: WeaponUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4399,3 +4396,4 @@ MonoBehaviour:
   Bullets: {fileID: 1718285966}
   Clips: {fileID: 1016659208}
   weapon: {fileID: 1827832914}
+  gun: {fileID: 1827832914}

@@ -12,10 +12,19 @@ public class WeaponStateUpdater : MonoBehaviour
     [SerializeField] TextMeshProUGUI Bullets;
     [SerializeField] TextMeshProUGUI Clips;
     [SerializeField] IWeapon weapon;
+    [SerializeField] Gun gun;
 
     private void Start()
     {
-        IWeapon.OnWeaponChange += OnWeaponChange;
+        weapon.OnWeaponChange += OnWeaponChange;
+        gun.OnGunStateChange += OnGunStateChange;
+    }
+
+    private void OnGunStateChange(Gun currentGun)
+    {
+        Damage.text = currentGun._bulletDamage.ToString();
+        Bullets.text = currentGun._bulletsAmount.ToString();
+        Clips.text = currentGun._magasinesAmount.ToString();
     }
 
     private void OnWeaponChange(WeaponSO obj)

@@ -9,8 +9,7 @@ public abstract class IWeapon : MonoBehaviour
     [SerializeField] protected float _timeBetweenUses;
     [SerializeField] protected float _lastTimeUsed;
     [SerializeField] protected Sprite _sprite;
-    public static event Action<WeaponSO> OnWeaponChange;
-    public static event Action<IWeapon> OnWeaponUpdate;
+    public event Action<WeaponSO> OnWeaponChange;    
 
     private void Start()
     {
