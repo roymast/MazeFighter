@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WeaponName: Sniper
   TimeBetweenUses: 2
-  Sprite: {fileID: 0}
+  Sprite: {fileID: 21300000, guid: f19465cbae442594388ac21ecce58fd1, type: 3}
+  IsAutomatic: 0
   BulletsPerMagasine: 7
   ReloadingTime: 6
   MagasinesAmount: 3
   BulletDamage: 30
   BulletSpeed: 14
   BulletDeviation: 1
-  IsAutomatic: 0

@@ -28,8 +28,7 @@ public class Gun : IWeapon
 
     public event Action<Gun> OnGunStateChange;
     private void Start()
-    {
-        _shooterCollider = gameObject.GetComponent<Collider2D>();
+    {        
         if (gunSO != null)
             SetValuesBySO();
     }
@@ -76,8 +75,8 @@ public class Gun : IWeapon
     {        
         if (!base.IsCanUse())
             return false;
-        if (_bulletsAmount <= 0)
-            return false;
+        //if (_bulletsAmount <= 0)
+        //    return false;
         //if (Time.time - _lastTimeReload > _reloadingTime)
         //    return false;
         return true;

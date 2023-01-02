@@ -18,6 +18,8 @@ public class Character : MonoBehaviour
     {
         _playerController.Speed = speed;
         _currentWeapon = gameObject.GetComponent<IWeapon>();
+        if(_currentWeapon == null)
+            _currentWeapon = gameObject.GetComponentInChildren<IWeapon>();      
         if(_currentWeapon != null)
             _currentWeapon.ChangeWeapon(_weaponSOList[_currentWeaponSO]);
         _characterHealth.SetHealth(hp);

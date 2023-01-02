@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WeaponName: Pistol
   TimeBetweenUses: 0.5
-  Sprite: {fileID: 0}
+  Sprite: {fileID: 21300000, guid: cdc53ae690d56454a8e37cc2a203139e, type: 3}
+  IsAutomatic: 0
   BulletsPerMagasine: 10
   ReloadingTime: 2
   MagasinesAmount: 3
   BulletDamage: 10
   BulletSpeed: 7
   BulletDeviation: 1
-  IsAutomatic: 0

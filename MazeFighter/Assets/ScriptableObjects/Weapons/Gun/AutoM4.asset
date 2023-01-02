@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WeaponName: AutoM4
   TimeBetweenUses: 0.2
-  Sprite: {fileID: 0}
+  Sprite: {fileID: 21300000, guid: 9f697892f26077548b1db94455c39ca9, type: 3}
   IsAutomatic: 1
   BulletsPerMagasine: 29
   ReloadingTime: 1
