@@ -10,6 +10,7 @@ public class CharacterHealth : MonoBehaviour
     [SerializeField] Transform _healthbarTransform;
 
     public event Action<int> OnHealthChange;
+    public static event Action<GameObject> OnCharacterDestroyed;
     private void Start()
     {
         gameObject.GetComponent<CharacterDamageable>().OnDamage += OnDamage;        
@@ -19,7 +20,7 @@ public class CharacterHealth : MonoBehaviour
     {
         _health = health;
         if(_startingHealth == 0)
-            _startingHealth = _health;
+            _startingHealth = health;
     }
 
     private void OnDamage(int damage)
@@ -29,6 +30,8 @@ public class CharacterHealth : MonoBehaviour
         {
             Debug.Log("dead");
             _health = 0;
+            OnCharacterDestroyed?.Invoke(gameObject);
+            Destroy(gameObject);
         }
         _healthbarTransform.localScale = new Vector3((float)_health / _startingHealth, _healthbarTransform.localScale.y);        
         OnHealthChange?.Invoke(_health);
