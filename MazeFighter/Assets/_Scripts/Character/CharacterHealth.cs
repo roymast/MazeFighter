@@ -30,7 +30,7 @@ public class CharacterHealth : MonoBehaviour
         {
             Debug.Log("dead");
             _health = 0;
-            OnCharacterDestroyed?.Invoke(gameObject);
+            OnCharacterDestroyed?.Invoke(transform.root.gameObject);
             Destroy(gameObject);
         }
         _healthbarTransform.localScale = new Vector3((float)_health / _startingHealth, _healthbarTransform.localScale.y);        
